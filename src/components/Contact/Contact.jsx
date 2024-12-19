@@ -1,9 +1,12 @@
-import React from 'react'
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { IoPersonSharp } from "react-icons/io5";
 import s from "./Contact.module.css"
 
-const Contact = ({ data, onDelete }) => {
+import { deleteContact } from '../../redux/contactsSlice';
+import { useDispatch } from 'react-redux';
+
+const Contact = ({ data }) => {
+	const dispatch = useDispatch()
   return (
 	  <div className={s.wrapper}>
 		  <div className={s.info}>
@@ -12,7 +15,7 @@ const Contact = ({ data, onDelete }) => {
 			  <div className={s.row}><BsFillTelephoneFill />
 			  <span>{data.number}</span></div>
 		  </div>
-		<button onClick={() => onDelete(data.id)}>Delete</button>
+		<button onClick={() => dispatch(deleteContact(data.id))}>Delete</button>
 	</div>
   )
 }
