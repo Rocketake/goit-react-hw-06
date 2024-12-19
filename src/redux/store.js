@@ -21,9 +21,10 @@ const persistConfigContacts = {
 };
 
 const persistConfigFilters = {
-  key: "contactsPersistor",
+  key: "filtersPersistor",
   version: 1,
   storage,
+  blacklist: ["name"],
 };
 
 const persistedReducerContacts = persistReducer(
